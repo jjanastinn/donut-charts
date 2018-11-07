@@ -1,14 +1,15 @@
 
 class Model {
 
-  constructor(entry) {
+  constructor(entry, index) {
+    this.id = index;
     this.title = entry.title;
     this.devices = entry.devices;
+    this.unit = entry.unit;
   }
 
   calculateSum() {
-    let sum = 0;
-    return this.devices.reduce((a, b) => a.amount + b.amount);
+    return this.devices.reduce((sum, device) => sum + device.amount, 0);
   }
 
   calculatePercent(device) {

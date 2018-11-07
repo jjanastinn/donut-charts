@@ -15,9 +15,9 @@ class Controller {
       mode: 'no-cors'
     })
     .then(res => res.json())
-    .then(element => {;
-      this.models = element.data.map(entry => {
-        const model = new Model(entry);
+    .then(element => {
+      this.models = element.data.map((entry, index) => {
+        const model = new Model(entry, index);
         return model;
       });
       return this.models;
@@ -30,7 +30,7 @@ class Controller {
     })
     .catch(err => console.log(err))
   }
-  
+
 }
 
 export default Controller;

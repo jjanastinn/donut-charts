@@ -13,37 +13,28 @@ class View {
     this.data = data;
 
     this.render();
-
   }
 
   render() {
     const output =
-    `
-      <div id="donut--chart"></div>
-      <h2>${this.data.title}</h2>
-      <p>${this.thousendSeparator(this.data.calculateSum())}</p>
-      <div class="donut--data">
-        <div class="donut--data__device">
-          <div style="color:${this.data.devices[0].color}">${this.data.devices[0].name}</div>
-          <div class="donut--data__device-numbers">
-            <span>${this.data.calculatePercent(this.data.devices[0]) + '%'}</span> 
-            <span class="donut--data__device-absolute">${this.thousendSeparator(this.data.devices[0].amount)}</span>
-          </div>        
-        </div>
-        <div class="donut--data__device">
-          <div style="color:${this.data.devices[1].color}">${this.data.devices[1].name}</div>
-          <div class="donut--data__device-numbers">
-            <span>${this.data.calculatePercent(this.data.devices[1]) + '%'}</span> 
-            <span class="donut--data__device-absolute">${this.thousendSeparator(this.data.devices[1].amount)}</span>
-          </div>
-        </div>
-      </div>
-    `;
+    `<div class="donut--chart"></div>
+    <h2>${this.data.title}</h2>
+    <p>${this.thousendSeparator(this.data.calculateSum()) + this.data.unit}</p>
+    <div class="donut--data">
+    ${this.data.devices.map((element, index) => 
+      `<div class="donut--data__device">
+        <div style="color:${element.color}">${element.name}</div>
+        <div class="donut--data__device-numbers">
+          <span>${this.data.calculatePercent(element) + '%'}</span> 
+          <span class="donut--data__device-absolute">${this.thousendSeparator(element.amount) + this.data.unit}</span>
+        </div>        
+        </div>`
+      ).join('')} 
+    </div>`;
     const html = createHMTL(output);
     document.getElementById('container').appendChild(html);
 
-    console.log(this.data);
-    this.chart = DonutChart(this.data);
+    this.chart = DonutChart(this.data.devices);
   }
 
   thousendSeparator(amount) {
