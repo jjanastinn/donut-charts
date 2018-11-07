@@ -1,0 +1,52 @@
+{
+  "data": [
+    {
+      "title": "Revenue",
+      "devices": [
+        {
+          "name": "Tablet",
+          "amount": 120000,
+          "color": "lightgreen"
+        },
+        {
+          "name": "Smartphone",
+          "amount": 80000,
+          "color": "darkgreen"
+        }
+      ],
+      "unit": "€"
+    },
+    {
+      "title": "Impressions",
+      "devices": [
+        {
+          "name": "Tablet",
+          "amount": 20000000,
+          "color": "lightblue"
+        },
+        {
+          "name": "Smartphone",
+          "amount": 30000000,
+          "color": "darkblue"
+        }
+      ],
+      "unit": ""
+    },
+    {
+      "title": "Visits",
+      "devices": [
+        {
+          "name": "Tablet",
+          "amount": 480000000,
+          "color": "yellow"
+        },
+        {
+          "name": "Smartphone",
+          "amount": 120000000,
+          "color": "orange"
+        }
+      ],
+      "unit": ""
+    }
+  ]
+}
