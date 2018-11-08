@@ -18,6 +18,15 @@ body {
 
 .donut--chart{
   text-align: center;
+  position: relative;
+}
+
+.canvas {
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .donut--info {

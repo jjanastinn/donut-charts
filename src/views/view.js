@@ -1,4 +1,5 @@
 import DonutChart from './donut';
+import LineChart from './lineChart';
 
 const createHMTL = (html) => {
   const div = document.createElement('div');
@@ -17,7 +18,9 @@ class View {
 
   render() {
     const output =
-    `<div class="donut--chart" id="donut-${this.data.id}"></div>
+    `<div class="donut--chart" id="donut-${this.data.id}">
+      <canvas class="canvas" id="canvas-${this.data.id}"></canvas>
+    </div>
     <div class="donut--info">
       <h2 class="donut--info__title">${this.data.title}</h2>
       <p class="donut--info__sum">${this.thousendSeparator(this.data.calculateSum()) + this.data.unit}</p>
@@ -41,6 +44,8 @@ class View {
       value: d.amount,
       color: d.color
     })), this.data.id);
+
+    this.LineChart = LineChart(this.data.devices[1].color, this.data.id);
   }
 
   thousendSeparator(amount) {
