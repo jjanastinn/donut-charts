@@ -1,58 +1,43 @@
 import * as d3 from 'd3';
 
-const DonutChart = (data) => {
+const DonutChart = (data, id) => {
 
-  console.log(data)
-  console.log(d3)
-
-  var width = 250, 
-      height = 250, 
-      radius = 125, 
-      color = d3.color("steelblue");
+  var width = 200,
+    height = 200,
+    radius = 100;
 
   // create arc
-  
   var arc = d3.arc()
-    .innerRadius(radius - 70)
-    .outerRadius(radius - 10)
-    .startAngle(0)
-    .endAngle(Math.PI / 2);
+    .innerRadius(90)
+    .outerRadius(100)
 
-  arc();
-  
-  // generate pie chart and donut chart
+  // create pie
   var pie = d3.pie()
-      .sort(null)
-      .value(function(d) { return d.amount; });
-  
-  // define the svg donut chart
-  var svg = d3.select(".donut--chart")
-      .append("svg")
-        .attr("width", width)
-        .attr("height", height)
-      .append("g")
-        .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
+    .sort(null)
+    .value(function (d) {
+      return d.value;
+    });
 
-    // "g element is a container used to group other SVG elements"
+  // create svg
+  var svg = d3.select("#donut-" + id)
+    .append("svg")
+    .data([data])
+    .attr("width", width)
+    .attr("height", height)
+    .append("g")
+    .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
+
+  // create g
   var g = svg.selectAll("svg")
-      .data(pie(data))
-      .enter().append("g")
-      .attr("class", "arc");
+    .data(pie)
+    .enter()
 
-    // append path 
+  // append path 
   g.append("path")
-      .attr("d", arc)
-      .style("fill", function(d) { return color(d.data.name); })
-      .transition()
-      .ease(d3.easeLinear)
-      .duration(2000)
-      .attrTween("d", tweenDonut);   
-  
-  function tweenDonut(b) {
-    b.innerRadius = 0;
-    var i = d3.interpolate({startAngle: 0, endAngle: 0}, b);
-    return function(t) { return arc(i(t)); };
-  }
-}  
+    .attr("d", arc)
+    .style("fill", function (d) {
+      return d3.color(d.data.color);
+    })
+}
 
 export default DonutChart;

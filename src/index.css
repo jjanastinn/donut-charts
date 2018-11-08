@@ -4,14 +4,40 @@ body {
 
 #container {
   display: grid;
-  grid-template-columns: repeat(3, 250px);
+  grid-template-columns: repeat(3, 300px);
+  grid-template-rows: 100vh;
   grid-gap: 60px;
   justify-content: center;
-  margin: 60px 0;
 }
 
 .donut--wrapper {
+  align-self: center;
   border-bottom: 2px solid #b0b0b0;
+  position: relative;
+}
+
+.donut--chart{
+  text-align: center;
+}
+
+.donut--info {
+  position: absolute;
+  top: 60px;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+}
+
+.donut--info__title {
+  text-transform: uppercase;
+  color: #b0b0b0;
+  font-size: 20px;
+  margin: 3px 0;
+}
+
+.donut--info__sum {
+  font-size: 24px;
+  margin: 0;
 }
 
 .donut--data {
@@ -24,8 +50,26 @@ body {
   font-size: 15px;
 }
 
-.donut--data__device:nth-child(2) {
+.donut--data__device:nth-child(1) {
+  grid-column: 2 / 3;
   text-align: right;
+}
+
+.donut--data__device:nth-child(2) {
+  grid-column: 1 / 2;
+  grid-row-start: 1;
+}
+
+.donut--data__device div:nth-child(1) {
+  font-weight: 600;
+}
+
+.donut--data__device-numbers {
+  margin-top: 5px;
+}
+
+.donut--data__device-relative {
+  margin-right: 10px;
 }
 
 .donut--data__device-absolute {
