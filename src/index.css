@@ -11,22 +11,22 @@ body {
 }
 
 .donut--wrapper {
+  position: relative;
   align-self: center;
   border-bottom: 2px solid #b0b0b0;
-  position: relative;
 }
 
 .donut--chart{
-  text-align: center;
   position: relative;
+  text-align: center;
 }
 
 .canvas {
-  border-radius: 50%;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  border-radius: 50%;
 }
 
 .donut--info {
@@ -38,8 +38,8 @@ body {
 }
 
 .donut--info__title {
-  text-transform: uppercase;
   color: #b0b0b0;
+  text-transform: uppercase;
   font-size: 20px;
   margin: 3px 0;
 }
@@ -55,8 +55,8 @@ body {
 }
 
 .donut--data__device {
-  padding-bottom: 10px;
   font-size: 15px;
+  padding-bottom: 10px;
 }
 
 .donut--data__device:nth-child(1) {
