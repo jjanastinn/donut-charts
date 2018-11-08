@@ -6,6 +6,14 @@ const LineChart = (color, id) => {
   width = canvas.width = 160,
   height = canvas.height = 160;
 
+  if (id % 2) {
+    ctx.translate(width, 0);
+    ctx.scale(-1, 1);
+    ctx.beginPath();
+  } else {
+    ctx.beginPath();
+  }
+
   ctx.moveTo(0, 130);
   ctx.lineTo(20, 125);
   ctx.lineTo(40, 127);
@@ -21,14 +29,6 @@ const LineChart = (color, id) => {
   ctx.stroke();
   ctx.fillStyle = color + "14";
   ctx.fill();
-
-  if (id % 2) {
-    ctx.beginPath();
-  } else {
-    ctx.translate(width, 0);
-    ctx.scale(-1, 1);
-    ctx.beginPath();
-  }
 
 }
 
