@@ -17,7 +17,7 @@ class Model {
   }
 
   getTabletColor() {
-    return this.devices.find(device => device.name == 'Tablet').color;
+    return this.devices.find(device => device.name === 'Tablet').color;
   }
   
 }
