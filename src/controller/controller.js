@@ -4,30 +4,25 @@ import View from '../views/view';
 class Controller {
 
   constructor() {
-    this.models = [];
-    this.views = [];
-
     this.fetchData();
   }
 
   fetchData() {
-    fetch('./data.json', {
+    return fetch('./data.json', {
       mode: 'no-cors'
     })
-    .then(res => res.json())
-    .then(element => {
-      this.models = element.data.map((entry, index) => {
-        const model = new Model(entry, index);
-        return model;
-      });
-      return this.models;
+    .then(res => {
+      let contentType = res.headers.get("content-type");
+      if(contentType && contentType.includes("application/json")) {
+        return res.json();
+      }
+      throw new TypeError("Oops, we haven't got JSON!");
     })
-    .then(models => {
-      this.views = models.map(model => {
-          const view = new View(model);
-          return view;
-      })
-    })
+    .then(element => element.data.map( (entry, index) => new Model(entry, index)))
+    .then(models => models.map(model => {
+      const view = new View(model);
+      view.render();
+    }))
     .catch(err => console.log(err))
   }
 

@@ -1,10 +1,10 @@
 
 const LineChart = (color, id) => {
 
-  const canvas = document.getElementById('canvas-' + id),
-  ctx = canvas.getContext('2d'),
-  width = canvas.width = 160,
-  height = canvas.height = 160;
+  const canvas = document.getElementById('canvas-' + id)
+  const ctx = canvas.getContext('2d')
+  const width = canvas.width = 160
+  const height = canvas.height = 160
 
   if (id % 2) {
     ctx.translate(width, 0);

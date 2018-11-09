@@ -2,14 +2,15 @@ import * as d3 from 'd3';
 
 const DonutChart = (data, id) => {
 
-  const width = 200,
-    height = 200,
-    radius = 100;
+  const width = 200;
+  const height = 200;
+  const innerRadius = 90;
+  const outerRadius = 100;
 
   // create arc
   const arc = d3.arc()
-    .innerRadius(90)
-    .outerRadius(100)
+    .innerRadius(innerRadius)
+    .outerRadius(outerRadius)
 
   // create pie
   const pie = d3.pie()
@@ -25,8 +26,8 @@ const DonutChart = (data, id) => {
     .append("g")
     .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
 
-  // create g
-  const g = svg.selectAll("svg")
+  // create donut
+  svg.selectAll("svg")
     .data(pie)
     .enter()
     .append("path")

@@ -14,6 +14,7 @@ body {
   position: relative;
   align-self: center;
   border-bottom: 2px solid #b0b0b0;
+  width: 300px;
 }
 
 .donut--chart{
@@ -69,7 +70,7 @@ body {
   grid-row-start: 1;
 }
 
-.donut--data__device div:nth-child(1) {
+.donut--data__device-name {
   font-weight: 600;
 }
 
@@ -84,4 +85,34 @@ body {
 .donut--data__device-absolute {
   color: #b0b0b0;
   margin-top: 5px;
+}
+
+@media only screen and (max-width: 600px) {
+
+  #container {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    justify-content: unset;
+    overflow-x: auto;
+    width: 300px;
+    -webkit-overflow-scrolling: touch;
+    -webkit-scroll-snap-points-x: repeat(300px);
+      -ms-scroll-snap-points-x: repeat(300px);
+        scroll-snap-points-x: repeat(300px);
+    -webkit-scroll-snap-type: mandatory;
+      -ms-scroll-snap-type: mandatory;
+        scroll-snap-type: mandatory;
+  }
+
+  .donut--wrapper {
+    flex-shrink: 0;
+  }
+
+  .donut--wrapper:nth-child(2) {
+    margin: 0 40px;
+  }
+
 }
